@@ -89,7 +89,7 @@ void main()
         break;
     }
 
-    printf("Do you wish to continue? (y/n)"); 
+    printf(" Do you wish to continue? (y/n)"); 
     fflush(stdin);
     scanf("%c",&ch);
     
@@ -176,9 +176,9 @@ int delafter(int y)
     int x;
     for(p=list;p->info!=y&&p!=NULL;p=p->next);
     q=p->next;
-    q->next=p->next; 
-    x=p->info; 
-    freenode(p); 
+    p->next=q->next;
+    x=q->info;
+    freenode(q);
     return x;
 }
 
