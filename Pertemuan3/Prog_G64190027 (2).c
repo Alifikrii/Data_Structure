@@ -1,11 +1,11 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-struct node
-{
-int info;
-struct node *next;
+struct node{
+    int info;
+    struct node *next;
 };
+
 typedef struct node* NODEPTR; 
 NODEPTR list=NULL;
 
@@ -25,11 +25,9 @@ int countAll();
 void traverse();
 
 /*Main Function*/
-int main()
-{
-NODEPTR p;
-
-int x,c,y,pos;
+int main(){
+    NODEPTR p;
+    int x,c,y,lokasi;
 
 char ch;
 
@@ -41,7 +39,7 @@ printf("4. Delete from the beginning\n");
 printf("5. Delete after a node\n"); 
 printf("6. Delete from the end\n"); 
 printf("7. Traverse\n");
-printf("8. Masukkan elemen pada Posisi tertentu\n");
+printf("8. Masukkan elemen pada posisi tertentu\n");
 printf("9. Cetak nilai elemen bilangan ganjil\n");
 printf("10. Hapus elemen sebelum elemen terakhir\n");
 printf("11. Hitung jumlah node\n");
@@ -81,11 +79,11 @@ case 6:  printf("The deleted item is:=> %d\n",delend()); break;
 
 case 7:  traverse(); break; 
 
-case 8: printf("\nMasukkan Posisi Elemen : ");
-scanf("%d",&pos);
+case 8: printf("\nMasukkan posisi Elemen : ");
+scanf("%d",&lokasi);
 printf("\nMasukkan elemen : ");
 scanf("%d",&x);
-inserttOK(pos,x);
+inserttOK(lokasi,x);
 break;
 
 case 9: cetak_ganjil(); break;
@@ -124,20 +122,19 @@ free(p);
 }
 
 /*SOAL 1*/
-void inserttOK(int pos, int x)
+void inserttOK(int lokasi, int x)
 {
 int size = countAll(list);
 NODEPTR p,temp;
 p = list; //head
 int counter = 2;
-if(pos < 1 || pos > size + 1) printf("Invalid Position!\n");
+if(lokasi < 1 || lokasi > size + 1) printf("Invalid lokasiition!\n");
 else{
 while(p != NULL){
-if(counter == pos){
+if(counter == lokasi){
 temp = getnode(); temp -> info = x;
 temp -> next = p -> next;
 p -> next = temp;
-
 }
 counter++;
 p = p -> next;
