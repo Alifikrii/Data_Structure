@@ -15,6 +15,7 @@ void freenode(NODEPTR);
 void insbeg(int);
 void insafter(int,int); 
 void insend(int);
+void inserttoK(int,int); /*jawaban nomor 1*/
 int delbeg();
 int delafter(int); 
 int delend(); 
@@ -37,7 +38,8 @@ void main()
         printf("5. Delete after a node\n"); 
         printf("6. Delete from the end\n"); 
         printf("7. Traverse\n");
-        printf("8. exit\n"); 
+        printf("8. Inset to specific position\n");
+        printf("9. exit\n"); 
         printf("===========================\n");
         printf("Enter your choice\t"); 
         scanf("%d",&c);
@@ -81,8 +83,16 @@ void main()
         case 7:  
             traverse(); 
             break; 
-        
-        case 8:  
+            
+        case 8: 
+            printf("\nEnter which position you want to insert the element "); 
+            scanf("%d",&y);
+            printf("\nEnter the element to be inserted "); 
+            scanf("%d",&x);
+            inserttoK(y,x); 
+            break; 
+
+        case 9:  
             exit(1);
 
         default: printf("\nWrong choice"); 
@@ -133,7 +143,6 @@ void insafter(int y,int x)
     q->next=p->next; 
     p->next=q;
 }
- 
 
 /*****/
 void insbeg(int x)
@@ -197,4 +206,19 @@ int delend()
     freenode(p);
     q->next=NULL; 
     return x;
-}   
+}  
+
+
+/*memasukkan elemen pada list ke-K*/
+void inserttoK(int y,int x)
+{
+    NODEPTR p=list, q, r;
+    int i;
+    r=getnode(); 
+    r->info=x;
+    for(i=2 ;i<y;i++)
+        {p = p->next;}
+    r->next=p->next; 
+    p->next=r;
+}
+ 
