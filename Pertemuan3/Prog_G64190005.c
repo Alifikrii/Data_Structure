@@ -9,6 +9,8 @@ struct node
 typedef struct node* NODEPTR; 
 NODEPTR list=NULL;
 
+int z=0; /* cara tercepat untuk menghitung banyaknya node Tanpa run time error*/
+
 /* Function Prototyping */
 NODEPTR getnode(void); 
 void freenode(NODEPTR); 
@@ -21,6 +23,8 @@ int delend();
 void traverse();
 void inserttoK(int,int); /* JAWABAN NOMOR 1*/
 void cetak_ganjil(); /* JAWABAN NOMOR 2 */
+void countAll(); /* JAWABAN NOMOR 4*/
+
 
 /*Main Function*/ 
 void main()
@@ -39,9 +43,10 @@ void main()
         printf("5. Delete after a node\n"); 
         printf("6. Delete from the end\n"); 
         printf("7. Traverse\n");
-        printf("8. Insert to specific position\n");
+        printf("8. Insert to a specific position\n");
         printf("9. Traverse odd\n");
-        printf("10. exit\n"); 
+        printf("10. Count ALL NODE\n");
+        printf("11. exit\n"); 
         printf("===========================\n");
         printf("Enter your choice\t"); 
         scanf("%d",&c);
@@ -70,16 +75,19 @@ void main()
 
         case 4: 
             printf("The deleted item is:=> %d",delbeg()); 
+            z = z-1;
             break;
 
         case 5: 
             printf("\nEnter the element to be inserted after which node"); 
             scanf("%d",&y);
             printf("The deleted item is:=> %d",delafter(y)); 
+            z = z-1;
             break; 
         
         case 6:  
-            printf("The deleted item is:=> %d",delend()); 
+            printf("The deleted item is:=> %d",delend());
+            z = z-1; 
             break;
 
         case 7:  
@@ -93,18 +101,23 @@ void main()
             scanf("%d",&x);
             inserttoK(y,x); 
             break; 
+
         case 9:
             cetak_ganjil();
             break;
 
-        case 10:  
+        case 10:
+            countAll();
+            break;
+
+        case 11:  
             exit(1);
 
         default: printf("\nWrong choice"); 
         break;
     }
 
-    printf(" Do you wish to continue? (y/n)"); 
+    printf(" \nDo you wish to continue? (y/n)"); 
     fflush(stdin);
     scanf("%c",&ch);
     
@@ -148,6 +161,7 @@ void insafter(int y,int x)
     for(p=list;p->info!=y&&p!=NULL;p=p->next);
     q->next=p->next; 
     p->next=q;
+    z++;
 }
 
 /*****/
@@ -158,6 +172,7 @@ void insbeg(int x)
     p->info=x;
     p->next=list; 
     list=p;
+    z++;
 }
 
 /*****/
@@ -170,6 +185,7 @@ void insend(int x)
     while(p->next!=NULL)
         p=p->next;
     p->next=q;
+    z++;
 }
 
 /*****/
@@ -181,6 +197,7 @@ int delbeg()
     list=p->next; 
     x=p->info; 
     freenode(p); 
+
     return x;
 }
 
@@ -194,6 +211,7 @@ int delafter(int y)
     p->next=q->next;
     x=q->info;
     freenode(q);
+
     return x;
 }
 
@@ -226,6 +244,7 @@ void inserttoK(int y,int x)
         {p = p->next;}
     r->next=p->next; 
     p->next=r;
+    z++;
 }
  
  /*SOAL 2. memprint elemen yang berisi nilai ganjil*/
@@ -233,28 +252,19 @@ void cetak_ganjil()
 {
     NODEPTR p=list; 
     int i;
-    printf("\nThe Linked List is\n"); 
- /*SOAL 2. memprint elemen yang berisi nilai ganjil*/
-void cetak_ganjil()
+    printf("\nThe ODD Linked List element is : \n"); 
+    
+    while(p!=NULL)
+    {
+        i= p -> info;
+        if(i%2!=0)
+        {printf("\t%d",p->info); }
+        p=p->next;
+    }
+}
+
+void countAll()
 {
-    NODEPTR p=list; 
-    int i;
-    printf("\nThe Linked List is\n"); 
-    
-    while(p!=NULL)
-    {
-        i= p -> info;
-        if(i%2!=0)
-        {printf("\t%d",p->info); }
-        p=p->next;
-    }
+    printf("%d\n", z);
 }
-    
-    while(p!=NULL)
-    {
-        i= p -> info;
-        if(i%2!=0)
-        {printf("\t%d",p->info); }
-        p=p->next;
-    }
-}
+   
