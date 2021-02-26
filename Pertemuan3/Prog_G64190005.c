@@ -23,6 +23,7 @@ int delend();
 void traverse();
 void inserttoK(int,int); /* JAWABAN NOMOR 1*/
 void cetak_ganjil(); /* JAWABAN NOMOR 2 */
+int delbeforend(); /*JAWABAN NOMOR 3*/
 void countAll(); /* JAWABAN NOMOR 4*/
 
 
@@ -46,7 +47,8 @@ void main()
         printf("8. Insert to a specific position\n");
         printf("9. Traverse odd\n");
         printf("10. Count ALL NODE\n");
-        printf("11. exit\n"); 
+        printf("11. Delete Before End\n");
+        printf("12. exit\n"); 
         printf("===========================\n");
         printf("Enter your choice\t"); 
         scanf("%d",&c);
@@ -110,7 +112,11 @@ void main()
             countAll();
             break;
 
-        case 11:  
+        case 11:
+            delbeforend();
+            break;
+
+        case 12:  
             exit(1);
 
         default: printf("\nWrong choice"); 
@@ -247,7 +253,7 @@ void inserttoK(int y,int x)
     z++;
 }
  
- /*SOAL 2. memprint elemen yang berisi nilai ganjil*/
+ /*SOAL 2. menampilkan elemen yang berisi nilai ganjil*/
 void cetak_ganjil()
 {
     NODEPTR p=list; 
@@ -263,6 +269,28 @@ void cetak_ganjil()
     }
 }
 
+/* SOAL 3. MENGHAPUS bilangan kedua terakhir */
+int delbeforend()
+{
+    int x;
+    NODEPTR p = list,q,r;
+    while(p != NULL)
+    {
+        if(p -> next -> next -> next == NULL)
+        {
+            q = p -> next -> next;
+            x = p -> next -> info;
+            p -> next = q;
+            q = NULL;
+            break;
+        }
+    p = p -> next;
+    }
+    freenode(q);
+    return x;
+}
+
+/* SOAL 4*/
 void countAll()
 {
     printf("%d\n", z);
