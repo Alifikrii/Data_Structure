@@ -15,11 +15,12 @@ void freenode(NODEPTR);
 void insbeg(int);
 void insafter(int,int); 
 void insend(int);
-void inserttoK(int,int); /*jawaban nomor 1*/
 int delbeg();
 int delafter(int); 
 int delend(); 
 void traverse();
+void inserttoK(int,int); /* JAWABAN NOMOR 1*/
+void cetak_ganjil(); /* JAWABAN NOMOR 2 */
 
 /*Main Function*/ 
 void main()
@@ -38,8 +39,9 @@ void main()
         printf("5. Delete after a node\n"); 
         printf("6. Delete from the end\n"); 
         printf("7. Traverse\n");
-        printf("8. Inset to specific position\n");
-        printf("9. exit\n"); 
+        printf("8. Insert to specific position\n");
+        printf("9. Traverse odd\n");
+        printf("10. exit\n"); 
         printf("===========================\n");
         printf("Enter your choice\t"); 
         scanf("%d",&c);
@@ -91,8 +93,11 @@ void main()
             scanf("%d",&x);
             inserttoK(y,x); 
             break; 
+        case 9:
+            cetak_ganjil();
+            break;
 
-        case 9:  
+        case 10:  
             exit(1);
 
         default: printf("\nWrong choice"); 
@@ -132,6 +137,7 @@ void traverse()
         p=p->next;
     }
 }
+
 
 /*****/     
 void insafter(int y,int x)
@@ -209,7 +215,7 @@ int delend()
 }  
 
 
-/*memasukkan elemen pada list ke-K*/
+/*SOAL 1. memasukkan elemen pada list ke-K*/
 void inserttoK(int y,int x)
 {
     NODEPTR p=list, q, r;
@@ -222,3 +228,18 @@ void inserttoK(int y,int x)
     p->next=r;
 }
  
+ /*SOAL 2. memprint elemen yang berisi nilai ganjil*/
+void cetak_ganjil()
+{
+    NODEPTR p=list; 
+    int i;
+    printf("\nThe Linked List is\n"); 
+    
+    while(p!=NULL)
+    {
+        i= p -> info;
+        if(i%2!=0)
+        {printf("\t%d",p->info); }
+        p=p->next;
+    }
+}
