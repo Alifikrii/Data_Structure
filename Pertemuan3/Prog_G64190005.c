@@ -46,8 +46,8 @@ void main()
         printf("7. Traverse\n");
         printf("8. Insert to a specific position\n");
         printf("9. Traverse odd\n");
-        printf("10. Count ALL NODE\n");
-        printf("11. Delete Before End\n");
+        printf("10. Delete Before End\n");
+        printf("11. Count ALL NODE\n");
         printf("12. exit\n"); 
         printf("===========================\n");
         printf("Enter your choice\t"); 
@@ -109,11 +109,12 @@ void main()
             break;
 
         case 10:
-            countAll();
+            delbeforend();
+            z = z-1;
             break;
 
         case 11:
-            delbeforend();
+            countAll();
             break;
 
         case 12:  
@@ -290,7 +291,7 @@ int delbeforend()
     return x;
 }
 
-/* SOAL 4*/
+/* SOAL 4 Menghitung semua Node yang ada*/
 void countAll()
 {
     printf("%d\n", z);
