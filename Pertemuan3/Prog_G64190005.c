@@ -234,6 +234,21 @@ void cetak_ganjil()
     NODEPTR p=list; 
     int i;
     printf("\nThe Linked List is\n"); 
+ /*SOAL 2. memprint elemen yang berisi nilai ganjil*/
+void cetak_ganjil()
+{
+    NODEPTR p=list; 
+    int i;
+    printf("\nThe Linked List is\n"); 
+    
+    while(p!=NULL)
+    {
+        i= p -> info;
+        if(i%2!=0)
+        {printf("\t%d",p->info); }
+        p=p->next;
+    }
+}
     
     while(p!=NULL)
     {
