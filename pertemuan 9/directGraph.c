@@ -1,3 +1,7 @@
+// Andi Muhammad Alifikri
+// G64190005
+// LKP 8
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -5,11 +9,9 @@
 #define inf 1000000000
 int finish_time[MAXIMUM_VERTICES], vertex[MAXIMUM_VERTICES];
 int time =0;
-
 int cycle=0;
-// Andi Muhammad Alifikri
-// G64190005
-// LKP 8
+
+
 
 typedef struct 
 {
@@ -21,7 +23,6 @@ typedef struct
 void inisialisasi_graph(Graph *g, int n_v, int n_e)
 {
 	int i,j;
-
 	g->n_vertices = n_v;
 	g->n_edges = n_e;
 
@@ -31,9 +32,9 @@ void inisialisasi_graph(Graph *g, int n_v, int n_e)
 		{
 			if (i<n_v && j<n_v)	
 			{
-				g->adjacency_matrix[i][j]=0;   /* nomor 1 */
+				g->adjacency_matrix[i][j]=0; 
 			}
-			else g->adjacency_matrix[i][j]=-1; /* nomor 2 */
+			else g->adjacency_matrix[i][j]=-1;
 		}
 		
 	}
@@ -85,7 +86,6 @@ void DFS_visit(Graph *g, COLOR *vertex_colors, int v)
 			cycle++;
 		}
 
-		// NOMOR 5 pertemuan 8
 		if (vertex_colors[i]==WHITE && g->adjacency_matrix[v][i]==1)
 		{
 			DFS_visit(g, vertex_colors, i);
@@ -156,7 +156,6 @@ void topological_sort(Graph *g)
 	}
 }
 
-
 int main()
 {
 	int n_v =0;
@@ -171,33 +170,26 @@ int main()
 	{
 		int a,b;
 		scanf("%d %d", &a, &b);
-		g.adjacency_matrix[a][b] = 1; /* NOMOR 3 */
+		g.adjacency_matrix[a][b] = 1;
 
-		/* NOMOR 4 */
-		/* jika matrikx tidak berarah */
-			// g.adjacency_matrix[a][b] = 1;
-			// g.adjacency_matrix[b][a] = 1;
 	}
 	
 	print_adjacency_matrix(&g);
 	printf("\n \n \nURUTAN VERTEX YANG MUNCUL ADALAH \n");
 	DFS(&g);
-
-printf("waktu finish setiap vertex ========> \n");
+	printf("waktu finish setiap vertex ========> \n");
 	for (i = 0; i < g.n_vertices; i++)
- {
- // cetak waktu finish vertex i
- printf("vertex ke-%d finished time: %d\n", i, finish_time[i]);
+	{
+		printf("vertex ke-%d finished time: %d\n", i, finish_time[i]);
+	}
+ 	printf("\n");
 
- }
- printf("\n");
-
-	// Nomor 3b pertemuan 9
+	// // Nomor 3b pertemuan 9
 	// if (cycle==0)
 	// {
 	// 	printf(" tidak terdapat cycle  \n");
 	// } else printf("terdapat -> %d cycle  \n", cycle);
-	
+
 	topological_sort(&g);
 	return 0;
 }
